@@ -11,7 +11,6 @@ end tanqueMe;
 architecture Prac3 of tanqueMe is
 type estado is (E0,E1,E2,E3);
 signal qt: estado;
-signal delay: integer range 0 to 24999999;
 
 begin
 process(RELOJ) 
