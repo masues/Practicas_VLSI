@@ -12,25 +12,11 @@ architecture Prac3 of tanqueMo is
 type estado is (E0,E1,E2,E3);
 signal qt: estado;
 signal delay: integer range 0 to 24999999;
-signal div: std_logic := '0';
 
 begin
-
-divisor: process(RELOJ)
+process(RELOJ) 
 begin
-	if (rising_edge(RELOJ)) then
-		if (delay = 24999999) then
-			delay <= 0;
-			div <= not (div);
-		else
-         delay <= delay + 1;
-		end if;
-	end if;
-end process;
-
-process(div) 
-begin
-	if rising_edge(div) then
+	if rising_edge(RELOJ) then
 		case qt is 
 			when E0 =>
 				A <= '0';
