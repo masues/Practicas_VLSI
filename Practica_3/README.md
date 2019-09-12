@@ -20,5 +20,5 @@ sucesivamente.
 ### Solcuión
 Se implemento tanto una solución al problema usando tanto una maquina de Mealy
 como una máquina de Moore.  
-[Video_YouTube](wwww.youtube.com.mx)
+[Video_YouTube](https://youtu.be/3CAlYKtTxr0)
 ---
