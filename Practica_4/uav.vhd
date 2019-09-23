@@ -5,19 +5,17 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 
 entity uav is
-    Port ( reloj : in  STD_LOGIC;
-			  reset: in  STD_LOGIC;
-			  Si,Sd: in STD_LOGIC;
-			  movi: out STD_LOGIC_VECTOR(3 downto 0);
-			  display: out STD_LOGIC_VECTOR(7 downto 0);
+    Port (reloj : in  STD_LOGIC;
+			 reset: in  STD_LOGIC;
+			 Si,Sd: in STD_LOGIC;
+			 movi: out STD_LOGIC_VECTOR(3 downto 0);
+			 display: out STD_LOGIC_VECTOR(6 downto 0));
 end uav;
 
 architecture Prac4 of uav is
 
-signal L1,L2,L3,L : STD_LOGIC_VECTOR(15 downto 0);
 signal delay: integer range 0 to 24999999;
-signal div: std_logic :='0';
-
+signal div: std_logic := '0';
 
 --Biblioteca de estados
 type Estados is (S0, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11);
@@ -25,7 +23,6 @@ signal qt: Estados;
 
 begin
 	divi: process(reloj)
-	variable cuenta: std_logic_vector(27 downto 0):=X"0000000";		--Declaracion de una varible interna de proceso
 	begin
 		if rising_edge (reloj) then
 			if (delay = 24999999) then		--Tiempo para 1s
@@ -38,41 +35,77 @@ begin
 	end process;
 
 	
-ASM: process(div,reset,Si,Sd)
-begin
-	if(reset='0') then
-			if rising_edge(div) then
-				case qt is 
-					when S0 =>
-							movi <=X"0";
-							display <="1000000";
-							if Si='0' then 
-								if Sd='0' then
-									movi<='1000';
-									qt <= S0;
+	ASM: process(div,reset,Si,Sd)
+	begin
+		if (reset='0') then
+				if rising_edge(div) then
+					case qt is 
+						when S0 =>
+								movi <= x"0";
+								display <= "1000000"; --0
+								if (Si='0') then 
+									if (Sd='0') then
+										movi <= x"8";
+										qt <= S0;
+									else
+										qt <= S1;
+									end if;
 								else
-									qt <= S1;
+									if (Sd='0') then
+										qt <= S3;
+									else
+										qt <= S5;
+									end if;
 								end if;
-							else
-								if Sd='0' then
-									qt<=S3;
-								else
-									qt<=S5;
-								end if;
-							end if;
-					when S1 =>
-							movi <=X"4";
-							display <= "1111001";
-							qt<=S2;
-			end if;
-					
-	end if;				2  0100100
-							3  0110000
-							4  0011001
-							5  0010010
-							6  0000011
-							7  1111000
-							
-	
-	
-end Behavioral;
+						when S1 =>
+								movi <= x"4";
+								display <= "1111001"; --1
+								qt <= S2;
+						when s2 =>
+								movi <= x"1";
+								display <= "0100100"; --2
+								qt <= s0;
+						when s3 =>
+								movi <= x"4";
+								display <= "0110000"; --3
+								qt <= s4;
+						when s4 =>
+								movi <= x"2";
+								display <= "0011001"; --4
+								qt <= s0;
+						when s5 =>
+								movi <= x"4";
+								display <= "0010010"; --5
+								qt <= s6;
+						when s6 =>
+								movi <= x"1";
+								display <= "0000010"; --6
+								qt <= s7;
+						when s7 =>
+								movi <= x"1";
+								display <= "1111000"; --7
+								qt <= s8;
+						when s8 =>
+								movi <= x"8";
+								display <= "0000000"; --8
+								qt <= s9;
+						when s9 =>
+								movi <= x"8";
+								display <= "0010000"; --9
+								qt <= s10;
+						when s10 =>
+								movi <= x"2";
+								display <= "0001000"; --A
+								qt <= s11;
+						when s11 =>
+								movi <= x"2";
+								display <= "0000011"; --b
+								qt <= s0;
+					end case;
+				end if;		
+			else
+				qt <= s0;
+		end if;
+	end process;
+
+end Prac4;
