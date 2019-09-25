@@ -34,7 +34,7 @@ begin
 		end if;
     end process;
     
-    re: process(reloj,reset)
+    re: process(reset)
     begin
         if (reset='0') then
             q<=S0;
