@@ -34,7 +34,7 @@ los sensores dela siguiente forma:
         salida  “GIRODER”  y  el  onceavo  estado  nuevamente  activa “GIRODER”,
         finalmente el siguiente estado es el Estado 0.
 ---
-### Solcuión
+### Solución
 Se implemento la solución usando una carta ASM, añandiendo un reset asincrono
 y colocando el estado actual en un display de 7 segmentos  
 [Video_YouTube](https://youtu.be/)
