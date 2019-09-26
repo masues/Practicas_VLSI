@@ -37,5 +37,5 @@ los sensores dela siguiente forma:
 ### Solución
 Se implemento la solución usando una carta ASM, añandiendo un reset asincrono
 y colocando el estado actual en un display de 7 segmentos  
-[Video_YouTube](https://youtu.be/)
+[Video_YouTube](https://youtu.be/oLgyyDYY5SU)
 ---
