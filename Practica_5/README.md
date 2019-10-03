@@ -23,5 +23,5 @@
 ### Solución
 >Se implemento la solución usando un contador, que divide al periodo
 >base de una señal en 100, y mantiene en alto el porcentaje que se desea.  
->[Clic aquí para ver video en YouTube](https:www.youtube.com)
+>[Clic aquí para ver video en YouTube](https://youtu.be/C4S0quFIYrw)
 ---
