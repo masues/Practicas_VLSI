@@ -1,4 +1,4 @@
-# Práctica 6. Memorias ROM. Diseño Digital VLSI
+# Práctica 6. Diseño Digital VLSI
 ## Integrantes del equipo:
 - Cabrera Beltrán Héctor Eduardo
 - Castillo López Humberto Serafín
@@ -19,6 +19,6 @@
 > Para ambos casos, se separó al sistema en dos archivos, la descripción de la
 > memoria (archivos miROM), y la conexión física (archivos access_miROM).
 > En específico, para la memoria ROM con el mensaje, se implementó un contador
-> que va a permitir el recorrido de la memoria.
+> que va a permitir el recorrido de la memoria.  
 > [Clic aquí para ver video en YouTube](https://www.youtube.com)
 ---
