@@ -20,5 +20,5 @@
 > memoria (archivos miROM), y la conexión física (archivos access_miROM).
 > En específico, para la memoria ROM con el mensaje, se implementó un contador
 > que va a permitir el recorrido de la memoria.  
-> [Clic aquí para ver video en YouTube](https://www.youtube.com)
+> [Clic aquí para ver video en YouTube](https://youtu.be/zfR60Yz_mZ8)
 ---
