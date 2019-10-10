@@ -4,15 +4,14 @@ USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY miROM IS
   GENERIC (--Se utiliza para describir el contenido de la memoria, la estructura de la ROM
-    addr_width : INTEGER := 16; --# localidades
-    addr_bits : INTEGER := 4;
+    addr_width : INTEGER := 17; --# localidades
+    addr_bits : INTEGER := 5;
     data_width : INTEGER := 7); --Se van a almacenar 7 bits
   PORT (
     RELOJ : IN std_logic;
-    addr : IN std_logic_vector(addr_bits - 1 DOWNTO 0);
-    data1 : OUT std_logic_vector(data_width - 1 DOWNTO 0)
-    data2 : OUT std_logic_vector(data_width - 1 DOWNTO 0)
-    data3 : OUT std_logic_vector(data_width - 1 DOWNTO 0)
+    data1 : OUT std_logic_vector(data_width - 1 DOWNTO 0);
+    data2 : OUT std_logic_vector(data_width - 1 DOWNTO 0);
+    data3 : OUT std_logic_vector(data_width - 1 DOWNTO 0);
     data4 : OUT std_logic_vector(data_width - 1 DOWNTO 0));
 END miROM;
 
@@ -34,14 +33,15 @@ ARCHITECTURE Prac6_3 OF miROM IS
   "1110111", -- _ (guión bajo)
   "1111001", --1
   "0111111", -- - (guión)
-  "1001000", --H
+  "0001001", --H
   "0010010", --S
   "0010010", --S
-  "0001000" --A
+  "0001000", --A
+  "1111111" -- Espacio en blanco
   );
   SIGNAL delay : INTEGER RANGE 0 TO 24999999;
   SIGNAL div : std_logic;
-  SIGNAL cuenta :INTEGER range 0 to 15;
+  SIGNAL cuenta :INTEGER range 0 to 16;
 BEGIN
   divisor : PROCESS (RELOJ)
   BEGIN
@@ -58,11 +58,15 @@ BEGIN
   contador : PROCESS (div)
   BEGIN
     IF (rising_edge(div)) THEN
-      cuenta <= cuenta + 1;
+      if cuenta = 13 then
+			cuenta <= 0;
+		else
+			cuenta <= cuenta + 1;
+		end if;		
     END IF;
   END PROCESS contador;
-  data <= sieteSeg(cuenta);
-  data <= sieteSeg(cuenta+1);
-  data <= sieteSeg(cuenta+2);
-  data <= sieteSeg(cuenta+3);
+  data4 <= sieteSeg(cuenta);
+  data3 <= sieteSeg(cuenta+1);
+  data2 <= sieteSeg(cuenta+2);
+  data1 <= sieteSeg(cuenta+3);
 END Prac6_3;
