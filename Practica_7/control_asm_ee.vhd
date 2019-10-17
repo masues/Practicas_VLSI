@@ -5,8 +5,8 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY control_asm_ee IS
   PORT (
-    entradas : std_logic_vector(3 DOWNTO 0);
-    reloj : std_logic;
+    entradas : IN std_logic_vector(3 DOWNTO 0);
+    reloj : IN std_logic;
     salidas : OUT std_logic_vector(5 DOWNTO 0));
 
 END control_asm_ee;
