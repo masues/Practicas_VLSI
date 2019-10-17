@@ -19,5 +19,5 @@
 > Mientras que para el direccionamiento por entrada estado:  
 > ![Entrada-Estado](Codificaciones/Entrada_Estado.png "Entrada-Estado")  
 > ![Entrada-Estado](Codificaciones/Entrada_Estado_codigo.png "Entrada-Estado_codigo")  
-> [Clic aquí para ver video en YouTube](https://youtu.be/zfR60Yz_mZ8)
+> [Clic aquí para ver video en YouTube](https://youtu.be/6Z5zNJVxvg0)
 ---
