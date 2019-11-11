@@ -43,7 +43,7 @@ BEGIN
 	datos_entrada : PROCESS (rx_in_s)
 	BEGIN
 		IF (rx_in_s = '1') THEN
-			leds <= dout_s;
+			leds <= std_logic_vector(signed(dout_s)-x"30");
 		END IF;
 	END PROCESS datos_entrada;
 
@@ -51,7 +51,7 @@ BEGIN
 	BEGIN
 		IF (tx_fin_s = '0') THEN
 			tx_ini_s<='1';
-			datain_s <= switch;
+			datain_s <= std_logic_vector(signed(switch)+x"30");
 		else
 			tx_ini_s<='0';
 		END IF;
