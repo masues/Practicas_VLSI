@@ -49,7 +49,7 @@ BEGIN
 
 	datos_salida : PROCESS (tx_fin_s)
 	BEGIN
-		IF (tx_fin_s = '1') THEN
+		IF (tx_fin_s = '0') THEN
 			tx_ini_s<='1';
 			datain_s <= switch;
 		else
