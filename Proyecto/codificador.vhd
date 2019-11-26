@@ -1,15 +1,15 @@
 ----------------------------------------------------------------------------------
--- Universidad Nacional Autónoma de México 
--- Engineers: Cabrera Beltrán Héctor Eduardo
---				  Castillo López Humberto Serafín
---				  García Racilla Sandra
---				  Suárez Espinoza Mario Alberto
+-- Universidad Nacional AutÃ³noma de MÃ©xico 
+-- Engineers: Cabrera BeltrÃ¡n HÃ©ctor Eduardo
+--				  Castillo LÃ³pez Humberto SerafÃ­n
+--				  GarcÃ­a Racilla Sandra
+--				  SuÃ¡rez Espinoza Mario Alberto
 -- 
 -- Create Date:    25/11/2019 
 -- Module Name:    codificador - Behavioral 
--- Project Name:   Traductor Código Morse
+-- Project Name:   Traductor CÃ³digo Morse
 -- Additional Comments: 
---		Codificación de entrada del símbolo, punto o línea
+--		CodificaciÃ³n de entrada del sÃ­mbolo, punto o lÃ­nea
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -28,8 +28,8 @@ architecture Behavioral of codificador is
 
 signal delay: integer range 0 to 249999;
 signal div: std_logic :='0';
-signal cont_btn: integer range 0 to 99; --Indica el tiempo que el botón estuvo presionado
-signal cont_segundo: integer range 0 to 99; --Determina si ya transcurrió un segundo
+signal cont_btn: integer range 0 to 99; --Indica el tiempo que el botÃ³n estuvo presionado
+signal cont_segundo: integer range 0 to 99; --Determina si ya transcurriÃ³ un segundo
 signal aux: integer range 0 to 99; --Guarda el valor de cont_btn
 
 begin
@@ -66,16 +66,18 @@ process(div)
 	
 process(aux)
 	begin
+		--Si es puntito
 		if (aux > 10 and aux < 50) then
-			simbolo <= "00";
-		elsif (aux > 50) then
 			simbolo <= "01";
-		elsif (aux = 0) then
+		--Si es rayita
+		elsif (aux > 50) then
 			simbolo <= "10";
+		--Si es espacio
+		elsif (aux = 0) then
+			simbolo <= "00";
 		else
 			simbolo <= "11";
 		end if;
 	end process;
 
 end Behavioral;
-
