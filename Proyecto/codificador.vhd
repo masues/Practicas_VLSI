@@ -1,15 +1,15 @@
 ----------------------------------------------------------------------------------
--- Universidad Nacional AutÛnoma de MÈxico 
--- Engineers: Cabrera Beltr·n HÈctor Eduardo
---				  Castillo LÛpez Humberto SerafÌn
---				  GarcÌa Racilla Sandra
---				  Su·rez Espinoza Mario Alberto
+-- Universidad Nacional Aut√≥noma de M√©xico 
+-- Engineers: Cabrera Beltr√°n H√©ctor Eduardo
+--				  Castillo L√≥pez Humberto Seraf√≠n
+--				  Garc√≠a Racilla Sandra
+--				  Su√°rez Espinoza Mario Alberto
 -- 
 -- Create Date:    25/11/2019 
 -- Module Name:    codificador - Behavioral 
--- Project Name:   Traductor CÛdigo Morse
+-- Project Name:   Traductor C√≥digo Morse
 -- Additional Comments: 
---		CodificaciÛn de entrada del sÌmbolo, punto o lÌnea
+--		Codificaci√≥n de entrada del s√≠mbolo, punto o l√≠nea
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -28,8 +28,8 @@ architecture Behavioral of codificador is
 
 signal delay: integer range 0 to 249999;
 signal div: std_logic :='0';
-signal cont_btn: integer range 0 to 99; --Indica el tiempo que el botÛn estuvo presionado
-signal cont_segundo: integer range 0 to 99; --Determina si ya transcurriÛ un segundo
+signal cont_btn: integer range 0 to 99; --Indica el tiempo que el bot√≥n estuvo presionado
+signal cont_segundo: integer range 0 to 199; --Determina si ya transcurrieron 2s
 signal aux: integer range 0 to 99; --Guarda el valor de cont_btn
 
 begin
@@ -49,7 +49,7 @@ divi: process(reloj)
 process(div)
 	begin
 		if rising_edge(div) then
-			if (cont_segundo = 99) then
+			if (cont_segundo = 199) then
 				aux <= cont_btn;
 				cont_segundo <= 0;
 				cont_btn <= 0;
@@ -66,16 +66,19 @@ process(div)
 	
 process(aux)
 	begin
+		--Codificacion punto
 		if (aux > 10 and aux < 50) then
-			simbolo <= "00";
-		elsif (aux > 50) then
 			simbolo <= "01";
-		elsif (aux = 0) then
+		--Codificacion linea
+		elsif (aux > 50) then
 			simbolo <= "10";
+		--Codificacion espacio
+		elsif (aux = 0) then
+			simbolo <= "00";
+		--Codificacion indeterminado
 		else
 			simbolo <= "11";
 		end if;
 	end process;
 
 end Behavioral;
-
