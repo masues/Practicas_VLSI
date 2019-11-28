@@ -32,9 +32,13 @@ NET "led_segundo" LOC = N15;
 
 NET "reset" LOC = J4;
 
-# PlanAhead Generated physical constraints 
 
 NET "switch[0]" LOC = M8;
 NET "switch[1]" LOC = N6;
 NET "switch[2]" LOC = N4;
 NET "switch[3]" LOC = P9;
+
+# PlanAhead Generated physical constraints 
+
+NET "reset_palabra" CLOCK_DEDICATED_ROUTE = FALSE;
+NET "reset_palabra" LOC = H4;

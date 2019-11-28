@@ -187,6 +187,7 @@ PORT(CLK: IN STD_LOGIC;
 --------------ABAJO ESCRIBE TUS PUERTOS--------------------	
 	  btn_morse: in std_logic;
 	  btn_save: in std_logic;
+	  reset_palabra: in std_logic;
 	  reset: in std_logic;
 	  switch: in std_logic_vector(3 downto 0);
 	  reg: out std_logic_vector(7 downto 0);
@@ -402,7 +403,7 @@ codi: entity work.codificador --Se crea una "instancia" del otro módulo
 		end if;
 	end process;
 
-	registro: process(seg,btn_save,switch)
+	registro: process(seg,btn_save,switch,reset_palabra)
 	begin
 		reg_char(7) <= L4(1);
 		reg_char(6) <= L4(0);
@@ -413,27 +414,48 @@ codi: entity work.codificador --Se crea una "instancia" del otro módulo
 		reg_char(1) <= L1(1);
 		reg_char(0) <= L1(0);
 		
-		if (btn_save = '1') then
-			char_aux <= reg_char;
-			case switch is
-				when "0000" => chars(0) <= char_aux;
-				when "0001" => chars(1) <= char_aux;
-				when "0010" => chars(2) <= char_aux;
-				when "0011" => chars(3) <= char_aux;
-				when "0100" => chars(4) <= char_aux;
-				when "0101" => chars(5) <= char_aux;
-				when "0110" => chars(6) <= char_aux;
-				when "0111" => chars(7) <= char_aux;
-				when "1000" => chars(8) <= char_aux;
-				when "1001" => chars(9) <= char_aux;
-				when "1010" => chars(10) <= char_aux;
-				when "1011" => chars(11) <= char_aux;
-				when "1100" => chars(12) <= char_aux;
-				when "1101" => chars(13) <= char_aux;
-				when "1110" => chars(14) <= char_aux;
-				when "1111" => chars(15) <= char_aux;
-				when others => chars(0) <= x"20";
-			end case;
+		if (reset_palabra = '0') then
+			if (btn_save = '1') then
+				char_aux <= reg_char;
+				case switch is
+					when "0000" => chars(0) <= char_aux;
+					when "0001" => chars(1) <= char_aux;
+					when "0010" => chars(2) <= char_aux;
+					when "0011" => chars(3) <= char_aux;
+					when "0100" => chars(4) <= char_aux;
+					when "0101" => chars(5) <= char_aux;
+					when "0110" => chars(6) <= char_aux;
+					when "0111" => chars(7) <= char_aux;
+					when "1000" => chars(8) <= char_aux;
+					when "1001" => chars(9) <= char_aux;
+					when "1010" => chars(10) <= char_aux;
+					when "1011" => chars(11) <= char_aux;
+					when "1100" => chars(12) <= char_aux;
+					when "1101" => chars(13) <= char_aux;
+					when "1110" => chars(14) <= char_aux;
+					when "1111" => chars(15) <= char_aux;
+					when others => chars(0) <= x"20";
+				end case;
+			end if;
+		else
+			chars <=(
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20",
+				x"20"
+				);
 		end if;
 		reg <= reg_char;
 	end process;
