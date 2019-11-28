@@ -1,0 +1,40 @@
+Bluetooth HC-05
+COMANDOS AT
+	*NAME: Noombre del dispositivo
+	*PSWD: Código de vinculación
+	*UART: Velocidad de comunicación
+		+UART=Baud,StopBit,Parity
+	*ROLE: Modo de trabajo
+		0-> Esclavo
+		1-> Maestro
+	*VERSION: Versión del dispositivo
+	*ADDR: Dirección del módulo
+		+ADDR:1234:56:ABCDEF
+	*CMODE: Módo de conexión
+		0-> Conectarse a un dispositivo con la dirección especifica
+		1-> Conectarse a cualquier dirección disponible
+	*BIND: Dirección del dispositivo a la que nos vamos a conectar
+		+BIND:1234,56,ABCDEF
+
+NOTAS: 	-Puerto Serial en: Both NL & CR
+	- Mismo valores de UART, PSWD, verificar VERSION
+
+
++NAME:Ameno  //Esclavo
++PSWD:"1234"
++UART:9600,0,0
++ADDR:FCA8:9A:43A5  
++ROLE:0  //Esclavo
++VERSION:3.0-20170601
++CMODE:0 //Se conecta al dispositivo especificado
++BIND:FCA8,9B,005809 
+
+
++NAME:Dorime  //Maestro
++PSWD:"1234"
++UART:9600,0,0
++ADDR:FCA8:9B:5809  
++ROLE:1  //Maestro
++VERSION:3.0-20170601
++CMODE:0 //Se conecta al dispositivo especificado
++BIND:FCA8,9A,0043A5  
