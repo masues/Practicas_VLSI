@@ -1,0 +1,40 @@
+
+
+NET "CLK" LOC = E7;
+NET "RS" LOC = D13;
+NET "RW" LOC = E2;
+NET "DATA_LCD[0]" LOC = B3;
+NET "DATA_LCD[1]" LOC = A5;
+NET "DATA_LCD[2]" LOC = C6;
+NET "DATA_LCD[3]" LOC = A8;
+NET "DATA_LCD[4]" LOC = C9;
+NET "DATA_LCD[5]" LOC = A11;
+NET "DATA_LCD[6]" LOC = B13;
+NET "DATA_LCD[7]" LOC = B15;
+NET "ENA" LOC = A2;
+NET "CORI" LOC = L1;
+NET "CORD" LOC = N2;
+
+
+NET "reg[0]" LOC = N9;
+NET "reg[1]" LOC = M5;
+NET "reg[2]" LOC = M3;
+NET "reg[3]" LOC = R10;
+NET "reg[4]" LOC = N8;
+NET "reg[5]" LOC = R5;
+NET "reg[6]" LOC = P1;
+NET "reg[7]" LOC = L2;
+NET "btn_morse" LOC = J3;
+NET "btn_save" CLOCK_DEDICATED_ROUTE = FALSE;
+NET "btn_save" LOC = K1;
+NET "led_segundo" LOC = N15;
+
+
+NET "reset" LOC = J4;
+
+# PlanAhead Generated physical constraints 
+
+NET "switch[0]" LOC = M8;
+NET "switch[1]" LOC = N6;
+NET "switch[2]" LOC = N4;
+NET "switch[3]" LOC = P9;
