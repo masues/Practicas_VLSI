@@ -20,6 +20,7 @@ entity codificador is
 	port(
 		reloj: in std_logic;
 		btn_morse: in std_logic;
+		buzzer: out std_logic;
 		simbolo: out std_logic_vector(1 downto 0);
 		led_segundo: out std_logic); --Enciende cada segundo
 end codificador;
@@ -34,6 +35,8 @@ signal aux: integer range 0 to 99; --Guarda el valor de cont_btn
 
 begin
 
+	buzzer <= btn_morse;
+	
 divi: process(reloj)
 	begin
 		if rising_edge (reloj) then
@@ -67,16 +70,17 @@ process(div)
 process(aux)
 	begin
 		--Si es puntito
-		if (aux > 0 and aux < 10) then
-			simbolo <= "01";
+--		if (aux > 0 and aux < 10) then
+--			simbolo <= "01";
 		--Si es rayita
-		elsif (aux > 10) then
+		if (aux > 10) then
 			simbolo <= "10";
 		--Si es espacio
 		elsif (aux = 0) then
 			simbolo <= "00";
+		--Si es puntito
 		else
-			simbolo <= "11";
+			simbolo <= "01";
 		end if;
 	end process;
 

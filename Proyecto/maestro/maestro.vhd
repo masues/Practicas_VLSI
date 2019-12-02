@@ -22,7 +22,7 @@ port(
 	RX : IN std_logic; --Pin de recepci?n de RS232
 	btn_morse, btn_save, reset, reset_palabra : IN std_logic;
 	TX : OUT std_logic; --Pin de transmisi?n de RS232
-	led_segundo: OUT std_logic;
+	led_segundo, buzzer: OUT std_logic;
 	leds : OUT std_logic_vector(7 DOWNTO 0)
 );
 end maestro;
@@ -40,6 +40,7 @@ begin
 	port map(
 		reloj => CLK, 
 		btn_morse => btn_morse,
+		buzzer => buzzer,
 		simbolo => L,
 		led_segundo => led_segundo
 	);
