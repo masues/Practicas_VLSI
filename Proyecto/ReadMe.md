@@ -8,3 +8,4 @@
 ### Descripción de el problema
 > Telégrafo
 ---
+[Clic aquí para ver video en YouTube](https://youtu.be/EuVCov6AZAY)
